@@ -1,0 +1,4 @@
+@EndUserText.label: 'service definition for document cds'
+define service Zsd_doc {
+  expose ZC_Doc;
+}

@@ -1,0 +1,33 @@
+managed implementation in class zbp_cds_action_15june unique;
+strict ( 2 );
+with draft;
+define behavior for zcds_action_15june //alias <alias_name>
+persistent table zaction_15june
+draft table zaction_d_15june
+
+etag master timestamp1
+lock master total etag timestamp1
+authorization master ( global )
+//etag master <field_name>
+
+{
+  create ;
+  update;
+  delete;
+  field ( readonly : update ) Name1;
+  action accept result [1] $self;
+  action reject result [1] $self; draft action Edit;
+  draft action Activate optimized;
+  draft action Discard ;
+  draft action Resume;
+  draft determine action Prepare;
+//  action ( features : instance ) Discard;
+
+
+  mapping for zaction_15june
+    {
+      Name1      = name1;
+      Status1    = status1;
+      timestamp1 = timestamp1;
+    }
+}

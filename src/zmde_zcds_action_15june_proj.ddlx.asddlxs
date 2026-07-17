@@ -1,0 +1,40 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+  typeName:       'Action',
+  typeNamePlural: 'Actions'
+}
+
+annotate view zcds_action_15june_proj with
+{
+  @UI.facet: [
+    {
+      id: 'GeneralInfo',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'General Information',
+      position: 10
+    }
+  ]
+
+  @UI: {
+    lineItem: [
+      { position: 10, label: 'Name' },
+      { type: #FOR_ACTION, dataAction: 'accept', label: 'Accept', position: 30 },
+      { type: #FOR_ACTION, dataAction: 'reject', label: 'Reject', position: 40 }  // ⬅️ NEW
+    ],
+    identification: [
+      { position: 10, label: 'Name' },
+      { type: #FOR_ACTION, dataAction: 'accept', label: 'Accept', position: 30 },
+      { type: #FOR_ACTION, dataAction: 'reject', label: 'Reject', position: 40 }  // ⬅️ NEW
+    ]
+  }
+  Name1;
+
+  @UI: {
+    lineItem: [{ position: 20, label: 'Status' }],
+    selectionField: [{ position: 20 }],
+    identification: [{ position: 20, label: 'Status' }]
+  }
+  Status1;
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'zcds_action_15june_proj ka sdef'
+define service Zsd_15june {
+  expose zcds_action_15june_proj;
+}

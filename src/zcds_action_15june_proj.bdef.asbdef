@@ -1,0 +1,16 @@
+projection;
+strict ( 2 );
+use draft;
+define behavior for zcds_action_15june_proj  //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+  use action accept;
+  use action reject;
+  use action Edit;          // ⬅️ ADD
+  use action Activate;      // ⬅️ ADD
+  use action Discard;       // ⬅️ ADD
+  use action Resume;        // ⬅️ ADD
+  use action Prepare;       // ⬅️ ADD
+}

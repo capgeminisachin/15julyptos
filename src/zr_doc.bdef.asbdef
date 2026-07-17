@@ -1,0 +1,38 @@
+managed implementation in class zbp_r_doc unique;
+strict ( 2 );
+//with draft;
+define behavior for zr_doc alias doc //alias <alias_name>
+persistent table zdoc_tab
+//draft table zdoc_d_tab
+etag master ChangedAt
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+//define behavior for ZI_Doc alias Doc
+//persistent table zdoc_tab
+//etag master ChangedAt
+//lock master
+//authorization master ( global )
+
+  field ( readonly, numbering : managed ) DocUuid;
+  field ( readonly ) CreatedBy, CreatedAt, ChangedBy, ChangedAt;
+
+  create;
+  update;
+  delete;
+
+  mapping for zdoc_tab corresponding
+  {
+    DocUuid    = doc_uuid;
+    DocId      = doc_id;
+    DocTitle   = doc_title;
+    Attachment = attachment;
+    MimeType   = mime_type;
+    FileName   = file_name;
+    CreatedBy  = created_by;
+    CreatedAt  = created_at;
+    ChangedBy  = changed_by;
+    ChangedAt  = changed_at;
+  }
+}

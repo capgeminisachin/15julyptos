@@ -1,0 +1,22 @@
+projection;
+//strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+use draft;
+
+define behavior for ZC_SALESHDR100 alias SalesHdr
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _SalesItem { create; with draft; }
+}
+
+define behavior for ZC_SALESITEM100 alias SalesItem
+use etag
+{
+  use update;
+  use delete;
+
+  use association _SalesHdr { with draft; }
+}

@@ -1,0 +1,12 @@
+@Metadata.layer: #CORE
+annotate entity ZC_SALESITEM100
+    with 
+{
+   @UI.hidden: true
+   Salesitemuuid;
+   @UI.hidden: true
+   Salesorderuuid;
+   @UI.lineItem: [{ position: 10 }]
+   Salesorderitem;
+    
+}

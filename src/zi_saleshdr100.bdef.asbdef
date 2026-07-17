@@ -1,0 +1,69 @@
+managed implementation in class zbp_i_saleshdr100 unique;
+with draft;
+//strict ( 2 );
+define behavior for ZI_SalesHdr100 alias SalesHdr
+persistent table zsaleshdr100
+
+draft table zdsaleshdr100
+lock master total etag Lastchangedat
+
+//authorization master ( instance )
+etag master Locallastchangedat
+//etag master Lastchangedat
+{
+  create;
+  update;
+  delete;
+  association _SalesItem { create; with draft; }
+  field ( numbering : managed, readonly ) Salesorderuuid;
+  field ( readonly ) Salesorder;
+  validation valProduct on save { create; update; }
+  determination detProduct on modify { field Distributionchannel; }
+  mapping for zsaleshdr100
+    {
+      Salesorderuuid      = salesorderuuid;
+      Salesorder          = salesorder;
+      Salesordertype      = salesordertype;
+      Description         = description;
+      Soldtoparty         = soldtoparty;
+      Salesorganization   = salesorganization;
+      Distributionchannel = distributionchannel;
+      documentreason      = documentreason;
+      Createdbyuser       = createdbyuser;
+      Creationat          = creationat;
+      Lastchangedat       = lastchangedat;
+      Locallastchangedat  = locallastchangedat;
+    }
+}
+
+
+define behavior for ZI_SalesItem100 alias SalesItem
+persistent table zsalesitem100
+draft table zdsalesitem100
+lock dependent by _SalesHdr
+//authorization dependent by _SalesHdr
+etag master Locallastchangedat
+//etag dependent by _SalesHdr
+{
+  update;
+  delete;
+  field ( readonly ) Salesorderuuid;
+  association _SalesHdr { with draft; }
+  field ( numbering : managed, readonly ) salesitemuuid;
+  mapping for zsalesitem100
+    {
+      Salesitemuuid          = salesitemuuid;
+      Salesorderuuid         = salesorderuuid;
+      Salesorderitem         = salesorderitem;
+      Salesorderitemcategory = salesorderitemcategory;
+      Salesorderitemtext     = salesorderitemtext;
+      Material               = material;
+      Plant                  = plant;
+      Orderquantity          = orderquantity;
+      Orderquantityunit      = orderquantityunit;
+      Createdbyuser          = createdbyuser;
+      Creationat             = creationat;
+      Lastchangedat          = lastchangedat;
+      Locallastchangedat     = locallastchangedat;
+    }
+}

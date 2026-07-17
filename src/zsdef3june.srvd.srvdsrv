@@ -1,0 +1,5 @@
+@EndUserText.label: 'Serv def for RAP app 3 june'
+define service ZSDEF3june {
+  expose ZC_SALESHDR100;
+  expose ZC_SALESITEM100;
+}

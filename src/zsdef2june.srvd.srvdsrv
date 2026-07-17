@@ -1,0 +1,4 @@
+@EndUserText.label: '2 june serv def'
+define service Zsdef2june {
+  expose ZCDS2JUNE;
+}
