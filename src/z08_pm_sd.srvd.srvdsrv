@@ -1,0 +1,4 @@
+@EndUserText.label: 'SERVICE DEFINITION'
+define service Z08_pm_sd {
+  expose z08_pm_pv as PMOrder;
+}
